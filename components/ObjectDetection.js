@@ -3,7 +3,7 @@ import React, {useEffect, useRef, useState} from "react";
 import Webcam from "react-webcam";
 import {load as cocoSSDLoad} from "@tensorflow-models/coco-ssd";
 import * as tf from "@tensorflow/tfjs";
-
+import ImageUploadButton from './ImageUploadButton';
 import {renderPredictions} from "@/utils/RenderPrediction";
 
 let detectInterval;
