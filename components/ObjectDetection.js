@@ -3,7 +3,7 @@ import React, {useEffect, useRef, useState} from "react";
 import Webcam from "react-webcam";
 import {load as cocoSSDLoad} from "@tensorflow-models/coco-ssd";
 import * as tf from "@tensorflow/tfjs";
-import ImageUploadButton from './ImageUploadButton';
+
 import {renderPredictions} from "@/utils/RenderPrediction";
 
 let detectInterval;
@@ -66,16 +66,21 @@ const ObjectDetection = () => {
   }, []);
 
   return (
-     <div className="mt-10 flex flex-col items-center">
-      <ImageUploadButton onImageSelected={setImageUrl} />
-      
-      {imageUrl && (
-        <div className="mt-8">
-          <img
-            src={imageUrl}
-            alt="Preview"
-            className="max-w-[500px] rounded-lg shadow-xl border-2 border-white/20"
-            onLoad={() => URL.revokeObjectURL(imageUrl)}
+    <div className="mt-8">
+      {isLoading ? (
+        <div className="gradient-text">Loading AI Model...</div>
+      ) : (
+        <div className="relative flex justify-center items-center gradient p-1.5 rounded-md">
+          {/* webcam */}
+          <Webcam
+            ref={webcamRef}
+            className="rounded-md w-full lg:h-[720px]"
+            muted
+          />
+          {/* canvas */}
+          <canvas
+            ref={canvasRef}
+            className="absolute top-0 left-0 z-99999 w-full lg:h-[720px]"
           />
         </div>
       )}
