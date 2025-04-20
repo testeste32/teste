@@ -1,12 +1,6 @@
-import ObjectDetection from "@/components/ObjectDetection";
+import { redirect } from 'next/navigation';
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center p-8 rounded-full">
-      <h1 className="gradient-title  rounded-md font-extrabold text-3xl md:text-6xl lg:text-8xl tracking-tighter md:px-6 text-center">
-        Upload da Foto
-      </h1>
-      <ObjectDetection />
-    </main>
-  );
+  redirect('/upload');
 }
+
